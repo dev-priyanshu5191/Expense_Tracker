@@ -3,7 +3,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const generateToken = (id) => {
-  // process.env.JWT_SECRET ke aage humne backup string laga di hai
   return jwt.sign({ id }, process.env.JWT_SECRET || "mybackupsecretkey", { expiresIn: "30d" });
 };
 exports.registerUser = async (req, res) => {
