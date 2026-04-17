@@ -1,7 +1,7 @@
 const Expense = require("../models/Expense");
 const mongoose = require("mongoose");
 
-// 1. Add Expense
+//  Add Expense
 exports.addExpense = async (req, res) => {
   try {
     const expense = await Expense.create({ ...req.body, user: req.user.id });
@@ -11,7 +11,7 @@ exports.addExpense = async (req, res) => {
   }
 };
 
-// 2. Get User's Expenses
+//  Get User's Expenses
 exports.getExpenses = async (req, res) => {
   try {
     const expenses = await Expense.find({ user: req.user.id }).sort({ date: -1 });
@@ -21,7 +21,7 @@ exports.getExpenses = async (req, res) => {
   }
 };
 
-// 3. Update Expense
+//  Update Expense
 exports.updateExpense = async (req, res) => {
   try {
     const expense = await Expense.findById(req.params.id);
@@ -38,7 +38,7 @@ exports.updateExpense = async (req, res) => {
   }
 };
 
-// 4. Delete Expense
+//  Delete Expense
 exports.deleteExpense = async (req, res) => {
   try {
     const expense = await Expense.findById(req.params.id);
@@ -55,7 +55,7 @@ exports.deleteExpense = async (req, res) => {
   }
 };
 
-// 5. Get Category Data (Pie Chart)
+//  Get Category Data (Pie Chart)
 exports.getCategoryData = async (req, res) => {
   try {
     const data = await Expense.aggregate([
@@ -68,7 +68,7 @@ exports.getCategoryData = async (req, res) => {
   }
 };
 
-// 6. Get Monthly Data (Bar Chart)
+//  Get Monthly Data (Bar Chart)
 exports.getMonthlyData = async (req, res) => {
   try {
     const data = await Expense.aggregate([
@@ -87,7 +87,6 @@ exports.getMonthlyData = async (req, res) => {
   }
 };
 
-// 7. Get ALL Users Expenses (ADMIN ONLY)
 exports.getAllUsersExpenses = async (req, res) => {
   try {
     const expenses = await Expense.find().populate("user", "name email").sort({ date: -1 });
