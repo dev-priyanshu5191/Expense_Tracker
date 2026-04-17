@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ExpenseForm from "./ExpenseForm";
 import ExpenseList from "./ExpenseList";
 import ExpenseChart from "./ExpenseChart";
-import MonthlyChart from "./MonthlyChart"; // Naya Monthly Chart yahan import hua
+import MonthlyChart from "./MonthlyChart"; 
 import API from "../api/api";
 
 const Dashboard = () => {

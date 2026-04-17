@@ -4,7 +4,6 @@ import API from "../api/api";
 const ExpenseForm = ({ fetchExpenses, expenseToEdit, setExpenseToEdit }) => {
   const [formData, setFormData] = useState({ amount: "", category: "Food", description: "", date: new Date().toISOString().split("T")[0] });
 
-  // Agar edit button click hua hai, toh form me data bhar do
   useEffect(() => {
     if (expenseToEdit) {
       setFormData({
@@ -19,7 +18,7 @@ const ExpenseForm = ({ fetchExpenses, expenseToEdit, setExpenseToEdit }) => {
     try {
       if (expenseToEdit) {
         await API.put(`/expenses/${expenseToEdit._id}`, formData);
-        setExpenseToEdit(null); // Edit done, clear it
+        setExpenseToEdit(null);
       } else {
         await API.post("/expenses", formData);
       }

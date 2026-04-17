@@ -8,7 +8,6 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 const MonthlyChart = ({ updateTrigger }) => {
   const [chartData, setChartData] = useState(null);
 
-  // Month names array (Kyunki backend 1, 2, 3 bhejta hai)
   const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
   useEffect(() => {
@@ -22,15 +21,15 @@ const MonthlyChart = ({ updateTrigger }) => {
         }
 
         const formattedData = {
-          // data._id backend se 1 (Jan), 2 (Feb) aata hai, isliye -1 karke array se naam uthaya hai
+          
           labels: data.map((item) => monthNames[item._id - 1]),
           datasets: [
             {
               label: "Amount Spent (₹)",
               data: data.map((item) => item.total),
-              backgroundColor: "#4F46E5", // Premium Indigo color
-              borderRadius: 6, // Bar ke corners round karega
-              barThickness: 30, // Bar ki motai
+              backgroundColor: "#4F46E5", 
+              borderRadius: 6, 
+              barThickness: 30,
             },
           ],
         };
@@ -46,7 +45,7 @@ const MonthlyChart = ({ updateTrigger }) => {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      legend: { display: false }, // Legend hide kiya premium look ke liye
+      legend: { display: false }, 
       tooltip: {
         backgroundColor: "rgba(31, 41, 55, 0.9)",
         padding: 12,
@@ -57,11 +56,11 @@ const MonthlyChart = ({ updateTrigger }) => {
     scales: {
       y: {
         beginAtZero: true,
-        grid: { color: "#F3F4F6" }, // Light grid lines
+        grid: { color: "#F3F4F6" }, 
         border: { display: false }
       },
       x: {
-        grid: { display: false }, // X axis ki lines chhupai
+        grid: { display: false }, 
         border: { display: false }
       }
     }
